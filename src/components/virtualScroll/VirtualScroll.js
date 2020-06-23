@@ -1,6 +1,6 @@
 import React, { useRef, useState,useEffect } from 'react';
 
-const VirtualList = (props) => {
+const VirtualScroll = (props) => {
   const totalHeight = +props.rowHeight * +props.totalElements + 'px';
   const [scrollTop,setScrollTop] = useState(0);
   // const [transformValue, setTransformState] = useState(`translateY(0)`);
@@ -15,12 +15,10 @@ const VirtualList = (props) => {
   const scrollEle = useRef();
   let startNodeele = Math.max(0,Math.floor(scrollTop / +props.rowHeight));
 
-  let visibleItems = props.items.slice(startNodeele, startNodeele + 50);
-  console.log(startNodeele*+props.rowHeight,'sc');
-  console.log(scrollTop,'s')
+  let visibleItems = props.items.slice(startNodeele, startNodeele + props.visibleItemsLength);
   let transformValue = `translateY(${startNodeele*+props.rowHeight}px)`;
   console.log('rendering',Math.random());
-  let timeout;
+
   const scroll = () => {
     setScrollTop(scrollEle.current.scrollTop)
    
@@ -37,4 +35,4 @@ const VirtualList = (props) => {
 }
 
 
-export default React.memo(VirtualList);
+export default React.memo(VirtualScroll);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import VirtualList from './components/virtualList/VirtualList';
+import VirtualScroll from './components/virtualScroll/VirtualScroll';
 
 const totalEle = 100000;
 const grids = new Array(totalEle).fill(null).map((data, index) => {
@@ -13,7 +13,7 @@ const grids = new Array(totalEle).fill(null).map((data, index) => {
 function App() {
  
   return (
-    <VirtualList
+    <VirtualScroll
     height="300px"
     totalElements = {totalEle}
     rowHeight={70}
@@ -21,12 +21,8 @@ function App() {
     visibleItemsLength={50}
 
     >
-    </VirtualList>
-    // <div className="scrollContainer" onScroll={scroll} style={{ height: "300px", overflowY: "scroll" }}>
-    //   <div className="main-container" style={{ height: containerTotalHeight, transform: transformState }}>
-    //   {visibleItemState}
-    //   </div>
-    // </div>
+    </VirtualScroll>
+  
   );
 }
 
